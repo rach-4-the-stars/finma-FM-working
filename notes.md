@@ -278,7 +278,7 @@ ___________/
 
 \
  \
-  \________
+  \ ________
 
     - max put value capped at y intercept
     - payoff = max(K - S, 0)
@@ -330,9 +330,16 @@ The **Black–Scholes formula** is a fundamental result in financial mathematics
 ### Black–Scholes Formula for a European Call Option
 
 $$
-C = S_0 N\!\left(\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}\right)
-- K e^{-rT} N\!\left(\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}} - \sigma \sqrt{T}\right)
+C = S_0 N\left(
+\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}
+\right)
+-
+K e^{-rT} N\left(
+\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}
+- \sigma \sqrt{T}
+\right)
 $$
+
 
 where:
 
