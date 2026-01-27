@@ -5,7 +5,7 @@ import pandas as pd
 
 class Forward_bank_bill(Bank_bill):
     def __init__(self, start_date=0, face_value=100, maturity=3, coupon=0, frequency=4, ytm=0, price=100):
-        super().__init__()
+        super().__init__(face_value, maturity, ytm, price)
         self.start_date = start_date
 
     def set_start_date(self, start_date):

@@ -11,21 +11,16 @@ class YieldCurve_with_forward_bills(YieldCurve):
         bank_bills = self.portfolio.get_bank_bills()
         forward_bank_bills = self.portfolio.get_forward_bank_bills()
         bonds = self.portfolio.get_bonds()
-        print("LOOK", self.maturities)  
+        
         self.add_zero_rate(0,0)
         for bank_bill in bank_bills:
-            print("LOOKf", self.maturities)  
             self.add_discount_factor(bank_bill.get_maturity(),bank_bill.get_price()/bank_bill.get_face_value())
 
         for bill in forward_bank_bills:
             # calculate the PV of the bond cashflows excluding the maturity cashflow 
             print("LOOK", self.maturities)  
-            print(bill.get_maturity())
-            if bill.get_start_date() not in self.maturities:
-                raise ValueError(
-                    f"Cannot bootstrap forward bill starting at {bill.get_start_date()} "
-                    f"before discount factor is known."
-                )          
+            print(bill.get_maturity(), bill.get_start_date())
+            
             self.add_discount_factor(bill.get_maturity(),(bill.get_price()/bill.get_face_value())*self.get_discount_factor(bill.get_start_date()))
         
         for bond in bonds:
