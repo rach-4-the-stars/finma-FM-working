@@ -123,6 +123,7 @@ class Portfolio(CashFlows):
         super().__init__()
         self.bonds = []
         self.bank_bills = []
+        self.forward_bank_bills = []
     
     def add_bond(self, bond):
         self.bonds.append(bond)
@@ -130,15 +131,24 @@ class Portfolio(CashFlows):
     def add_bank_bill(self, bank_bill):
         self.bank_bills.append(bank_bill)
     
+    def add_forward_bank_bill(self, forward_bank_bill):
+        self.forward_bank_bills.append(forward_bank_bill)
+    
     def get_bonds(self):
         return self.bonds
     
     def get_bank_bills(self):
         return self.bank_bills
     
+    def get_forward_bank_bills(self):
+        return self.forward_bank_bills
+    
     def set_cash_flows(self):
         for bond in self.bonds:
             for cash_flow in bond.get_cash_flows():
+                self.add_cash_flow(cash_flow[0], + cash_flow[1])
+        for forward_bank_bill in self.forward_bank_bills:
+            for cash_flow in forward_bank_bill.get_cash_flows():
                 self.add_cash_flow(cash_flow[0], + cash_flow[1])
         for bank_bill in self.bank_bills:
             for cash_flow in bank_bill.get_cash_flows():

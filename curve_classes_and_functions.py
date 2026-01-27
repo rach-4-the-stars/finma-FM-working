@@ -75,8 +75,9 @@ def exp_interp(xs, ys, x):
     
     # Find the interval [x0, x1] where x0 <= x <= x1
     idx = np.searchsorted(xs, x) - 1
-    x0, x1 = xs[idx], xs[idx + 1]
-    y0, y1 = ys[idx], ys[idx + 1]
+    #x0, x1 = xs[idx], xs[idx + 1]
+    x0, x1 = xs[idx - 1], xs[idx]
+    y0, y1 = ys[idx - 1], ys[idx]
     
     # Calculate the continuously compounded rate
     rate = (np.log(y1) - np.log(y0)) / (x1 - x0)
