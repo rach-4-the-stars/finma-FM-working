@@ -257,3 +257,68 @@ class Bank_bill(CashFlows):  # Bank_bill inherits from CashFlows
 ```
 
 Can see more at https://github.com/howesrichard/FM_yield_curve/blob/main/0_OOP_intro_financial_instruments.ipynb 
+
+
+# Options
+- financial contracts that give the holder the right, but not obligation, to buy or sell an underlying asset at a specific price (strike price) on or before a certain date (the _expiration date_)
+
+## Types of options
+- *Call Option*: Gives the holder the right to buy the underlying asset at the strike price.
+
+             /
+            /
+___________/
+
+    - max call value is unlimited
+    - payoff = max(S - K, 0)
+        - S: asset price
+        - K: strike price
+
+- *Put Option*: Gives the holder the right to sell the underlying asset at the strike price.
+
+\
+ \
+  \________
+
+    - max put value capped at y intercept
+    - payoff = max(K - S, 0)
+
+- never lose money, just oppurtunity to make money
+
+## Code: generate payoff diagram
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+K = 100  # Strike price
+S = np.linspace(50, 150, 200)  # Range of underlying prices at expiry
+
+# Payoff calculations
+call_payoff = np.maximum(S - K, 0)
+put_payoff = np.maximum(K - S, 0)
+
+# Plot Call Option Payoff
+plt.figure(figsize=(8, 4))
+plt.plot(S, call_payoff, label='Call Option Payoff', color='blue')
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(K, color='gray', linestyle='--', label='Strike Price (K)')
+plt.title('Call Option Payoff at Expiry')
+plt.xlabel('Stock Price at Expiry ($S$)')
+plt.ylabel('Payoff')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plot Put Option Payoff
+plt.figure(figsize=(8, 4))
+plt.plot(S, put_payoff, label='Put Option Payoff', color='red')
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(K, color='gray', linestyle='--', label='Strike Price (K)')
+plt.title('Put Option Payoff at Expiry')
+plt.xlabel('Stock Price at Expiry ($S$)')
+plt.ylabel('Payoff')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
