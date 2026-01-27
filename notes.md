@@ -215,3 +215,45 @@ print("\nZero Curve DataFrame:")
 print(zc_dataframe)
 zc_dataframe
 ```
+refer to https://github.com/howesrichard/FM_yield_curve/blob/main/1_adding_a_zero_curve.ipynb for more 
+
+## Inheritance
+- create new classes based on existing ones
+
+```
+class Bank_bill(CashFlows):  # Bank_bill inherits from CashFlows
+    
+    def __init__(self, face_value=100, maturity=0.25, ytm=0.00, price=100):
+        # Call the parent class's __init__ method
+        super().__init__()
+        # Add attributes specific to bank bills
+        self.face_value = face_value
+        self.maturity = maturity
+        self.ytm = ytm
+        self.price = price
+    
+    def set_ytm(self, ytm):
+        """Set yield to maturity and calculate the corresponding price."""
+        self.ytm = ytm
+        # Simple interest formula for bank bills
+        self.price = self.face_value / (1 + ytm * self.maturity)
+    
+    def set_price(self, price):
+        """Set price and calculate the implied yield to maturity."""
+        self.price = price
+        # Solve for ytm from the pricing formula
+        self.ytm = (self.face_value / price - 1) / self.maturity
+    
+    def get_price(self):
+        return self.price
+    
+    def get_ytm(self):
+        return self.ytm
+    
+    def set_cash_flows(self):
+        """Generate the cash flows for this bank bill."""
+        self.add_cash_flow(0, -self.price)
+        self.add_cash_flow(self.maturity, self.face_value)
+```
+
+Can see more at https://github.com/howesrichard/FM_yield_curve/blob/main/0_OOP_intro_financial_instruments.ipynb 
