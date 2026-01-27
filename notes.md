@@ -323,41 +323,44 @@ plt.grid(True)
 plt.show()
 ```
 
-"## The Black-Scholes Formula\n",
-    "\n",
-    "The **Black-Scholes formula** is a fundamental result in financial mathematics used to calculate the theoretical price of European call and put options, which are options that can only be exercised at expiration. It assumes that the price of the underlying asset follows a Geometric Brownian Motion with constant drift and volatility.\n",
-    "\n",
-    "### Black-Scholes Formula for a European Call Option\n",
-    "\n",
-    "$$\n",
-    "C = S_0 N(\\frac{\\ln(S_0/K) + (r + \\frac{1}{2}\\sigma^2)T}{\\sigma \\sqrt{T}}) - K e^{-rT} N(\\frac{\\ln(S_0/K) + (r + \\frac{1}{2}\\sigma^2)T}{\\sigma \\sqrt{T}} - \\sigma \\sqrt{T})\n",
-    "$$\n",
-    "\n",
-    "where:\n",
-    "- $ C $ = price of the European call option\n",
-    "- $ S_0 $ = current price of the underlying asset\n",
-    "- $ K $ = strike price\n",
-    "- $ r $ = risk-free interest rate (annualized)\n",
-    "- $ T $ = time to maturity (in years)\n",
-    "- $ N(\\cdot) $ = cumulative distribution function of the standard normal distribution\n",
-    "\n",
-    "<br><br>\n",
-    "\n",
-    "The formula can be written in a slightly more readable and understandable form as:\n",
-    "\n",
-    "$$\n",
-    "C = S_0 N(d_1) - K e^{-rT} N(d_2)\n",
-    "$$\n",
-    "\n",
-    "The terms $ d_1 $ and $ d_2 $ are defined as:\n",
-    "\n",
-    "$$\n",
-    "d_1 = \\frac{\\ln(S_0/K) + (r + \\frac{1}{2}\\sigma^2)T}{\\sigma \\sqrt{T}}\n",
-    "$$\n",
-    "$$\n",
-    "d_2 = d_1 - \\sigma \\sqrt{T}\n",
-    "$$\n",
-    "\n",
-    "where:\n",
-    "- $ \\sigma $ = volatility of the underlying asset (annualized)\n",
-    "\n",
+## The Black–Scholes Formula
+
+The **Black–Scholes formula** is a fundamental result in financial mathematics used to calculate the theoretical price of European call and put options, which are options that can only be exercised at expiration. It assumes that the price of the underlying asset follows a *Geometric Brownian Motion* with constant drift and volatility.
+
+### Black–Scholes Formula for a European Call Option
+
+$$
+C = S_0 N\!\left(\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}\right)
+- K e^{-rT} N\!\left(\frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}} - \sigma \sqrt{T}\right)
+$$
+
+where:
+
+- $C$ = price of the European call option  
+- $S_0$ = current price of the underlying asset  
+- $K$ = strike price  
+- $r$ = risk-free interest rate (annualized)  
+- $T$ = time to maturity (in years)  
+- $N(\cdot)$ = cumulative distribution function of the standard normal distribution  
+
+<br><br>
+
+The formula can be written in a slightly more readable and understandable form as:
+
+$$
+C = S_0 N(d_1) - K e^{-rT} N(d_2)
+$$
+
+The terms $d_1$ and $d_2$ are defined as:
+
+$$
+d_1 = \frac{\ln(S_0/K) + \left(r + \frac{1}{2}\sigma^2\right)T}{\sigma \sqrt{T}}
+$$
+
+$$
+d_2 = d_1 - \sigma \sqrt{T}
+$$
+
+where:
+
+- $\sigma$ = volatility of the underlying asset (annualized)
