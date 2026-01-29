@@ -371,3 +371,10 @@ $$
 where:
 
 - $\sigma$ = volatility of the underlying asset (annualized)
+
+
+# Quant trading and investing
+## Hedge funds
+- hedge funds are leveraged investment funds originally designed to deploy strategies less exposed to broader markets
+- usually low tax juristictions
+- usually charge high fees
