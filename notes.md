@@ -378,3 +378,9 @@ where:
 - hedge funds are leveraged investment funds originally designed to deploy strategies less exposed to broader markets
 - usually low tax juristictions
 - usually charge high fees
+- defining characters
+    - more aggresive leveraged position taking
+    - say that they are market neutral
+        - true, uncorrelated risk for extra return 
+
+## Momentum trading
